@@ -1,13 +1,11 @@
 const UsuarioDono = require("../models/UsuarioDono");
-const { usuarios } = require("../mock/dados.json");
-
-const usuariosDono = usuarios.filter(
-  (usuario) => usuario.papel === "usuarioDono"
-);
+const UsuarioDonoServece = require("../serveces/UsuarioDonoServece");
 
 class UsuarioDonoController {
   index(req, res) {
     try {
+        const usuariosDono = UsuarioDonoServece.pegarTodos()
+
       if (usuariosDono.length > 0) {
         res.status(200).json(usuariosDono);
       } else {
